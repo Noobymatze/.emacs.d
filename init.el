@@ -24,7 +24,7 @@
 ; General configuration
 ;
 
-(setq backup-directory-alist '(expand-file-name "backups" user-emacs-directory))
+(setq backup-directory-alist '(("." . "~/.emacs.d/backups")))
 
 (when window-system
   (tooltip-mode -1)

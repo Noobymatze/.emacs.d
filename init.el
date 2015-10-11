@@ -24,8 +24,7 @@
 ; General configuration
 ;
 
-
-(setq backup-directory-alist '(("." . "~/.emacs.d/backups")))
+(setq backup-directory-alist '(expand-file-name "backups" user-emacs-directory))
 
 (when window-system
   (tooltip-mode -1)
@@ -45,6 +44,7 @@
 (global-set-key (kbd "M-k") 'windmove-up)
 (global-set-key (kbd "M-l") 'windmove-right)
 (global-set-key (kbd "M-h") 'windmove-left)
+
 
 ;
 ; Packages

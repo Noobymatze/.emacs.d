@@ -53,7 +53,9 @@
 (add-to-list 'load-path (expand-file-name "config" user-emacs-directory))
 
 (require 'init-evil)
+(require 'init-whitespace)
 (require 'init-haskell)
 (require 'init-flycheck)
 (require 'init-diredp)
+(require 'init-markdown)
 

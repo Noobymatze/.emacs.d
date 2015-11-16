@@ -45,6 +45,9 @@
 (global-set-key (kbd "M-l") 'windmove-right)
 (global-set-key (kbd "M-h") 'windmove-left)
 
+; Editing
+(setq indent-tabs-mode nil)
+(setq js-indent-level 2)
 
 ;
 ; Packages
@@ -52,10 +55,14 @@
 
 (add-to-list 'load-path (expand-file-name "config" user-emacs-directory))
 
+
 (require 'init-evil)
 (require 'init-whitespace)
 (require 'init-haskell)
 (require 'init-flycheck)
 (require 'init-diredp)
 (require 'init-markdown)
-
+(require 'init-web-mode)
+(require 'init-purescript)
+(require 'init-php-mode)
+(require 'init-r-mode)

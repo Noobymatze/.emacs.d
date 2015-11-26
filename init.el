@@ -37,6 +37,7 @@
 (global-linum-mode 1)
 
 (fset 'yes-or-no-p 'y-or-n-p)
+(setq-default indent-tabs-mode nil)
 
 (global-set-key (kbd "M-j") 'windmove-down)
 (global-set-key (kbd "M-k") 'windmove-up)
@@ -149,10 +150,13 @@
 ;
 
 (use-package web-mode
+  :init
+  (add-to-list 'auto-mode-alist '("\\.jsx$" . web-mode))
   :config
   (setq web-mode-markup-indent-offset 2)
   (setq web-mode-css-indent-offset 2)
-  (setq web-mode-code-indent-offset 2))
+  (setq web-mode-code-indent-offset 2)
+  (setq web-mode-content-types-alist '(("jsx" . "\\.js[x]?\\'"))))
 ; (setq css-indent-offset 2)
 
 
@@ -170,6 +174,8 @@
 ;
 
 (use-package js2-mode
+  :mode (("\\.js$" . js2-mode))
   :config
-  (setq-default
-   js2-indent-level 2))
+  (setq-default 
+   js2-highlight-level 3
+   js2-basic-offset 2))

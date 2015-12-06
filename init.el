@@ -177,5 +177,17 @@
   :mode (("\\.js$" . js2-mode))
   :config
   (setq-default 
+   js2-switch-indent-offset t
    js2-highlight-level 3
    js2-basic-offset 2))
+
+
+;
+; SCSS files
+;
+
+(use-package scss-mode
+  :config
+  (setq-default 
+   scss-compile-at-save nil
+   css-indent-offset 2))

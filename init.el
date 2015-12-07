@@ -110,6 +110,18 @@
 
 
 ;
+; Ido mode
+;
+
+(use-package ido
+  :init
+  (ido-mode 1)
+  :config
+  (setq ido-everywhere t)
+  (setq ido-enable-flex-matching t))
+
+
+;
 ; Dired+
 ;
 
@@ -191,3 +203,13 @@
   (setq-default 
    scss-compile-at-save nil
    css-indent-offset 2))
+
+
+;
+; Company mode
+;
+
+(use-package company
+  :init
+  (add-hook 'after-init-hook 'global-company-mode))
+

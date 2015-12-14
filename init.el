@@ -213,3 +213,23 @@
   :init
   (add-hook 'after-init-hook 'global-company-mode))
 
+
+;
+; Powerline
+;
+
+(use-package powerline
+  :init
+  (powerline-default-theme))
+
+
+;
+; Org mode
+;
+
+(use-package org
+  :init
+  (org-babel-do-load-languages 'org-babel-load-languages '((python . t)
+                                                           (java . t)
+                                                           (sql . t)
+                                                           (C . t))))

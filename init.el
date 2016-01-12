@@ -93,6 +93,7 @@
 (use-package whitespace
   :init 
   (add-hook 'markdown-mode-hook 'whitespace-mode)
+  (add-hook 'tex-mode-hook 'whitespace-mode)
   :config
   (setq whitespace-line-column 80)
   (setq whitespace-style '(face lines-tail)))

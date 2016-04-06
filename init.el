@@ -43,6 +43,7 @@
 (global-set-key (kbd "M-k") 'windmove-up)
 (global-set-key (kbd "M-l") 'windmove-right)
 (global-set-key (kbd "M-h") 'windmove-left)
+(global-unset-key (kbd "C-SPC"))
 
 ;
 ; Packages with use-package
@@ -58,9 +59,25 @@
 ; Color theme
 ;
 
-(use-package atom-one-dark
+(use-package atom-one-dark-theme
+  :ensure
   :init
   (load-theme 'atom-one-dark t))
+
+
+;
+; Evil leader
+;
+
+(use-package evil-leader
+  :ensure
+  :init
+  (global-evil-leader-mode)
+  (evil-leader/set-leader "<SPC>")
+  (evil-leader/set-key "g" 'magit-status)
+  (evil-leader/set-key "b" 'ido-switch-buffer)
+  (evil-leader/set-key "f" 'find-file)
+  (evil-leader/set-key-for-mode 'org-mode "e" 'org-html-export-to-html))
 
 
 ;
@@ -68,9 +85,30 @@
 ; 
 
 (use-package evil
+  :ensure
   :config 
   (add-to-list 'evil-emacs-state-modes 'eshell)
   (evil-mode t))
+
+
+;
+; Magit
+;
+
+(use-package magit
+  :ensure
+  :init
+  (global-set-key (kbd "C-x g") 'magit-status))
+
+
+
+;
+; Evil Magit
+;
+
+(use-package evil-magit
+  :ensure
+  )
 
 
 ;
@@ -79,6 +117,7 @@
 ; 
 
 (use-package key-chord
+  :ensure
   :config 
   (key-chord-define evil-insert-state-map "jj" 'evil-normal-state)
   (key-chord-mode t))
@@ -91,6 +130,7 @@
 ;
 
 (use-package whitespace
+  :ensure
   :init 
   (add-hook 'markdown-mode-hook 'whitespace-mode)
   (add-hook 'tex-mode-hook 'whitespace-mode)
@@ -104,6 +144,7 @@
 ;
 
 (use-package flycheck
+  :ensure
   :init 
   (add-hook 'after-init-hook #'global-flycheck-mode)
   :config
@@ -127,6 +168,7 @@
 ;
 
 (use-package dired+
+  :ensure
   :config
   (evil-define-key 'normal dired-mode-map "-" 'diredp-up-directory-reuse-dir-buffer)
   (evil-define-key 'normal dired-mode-map "d" 'dired-create-directory)
@@ -140,6 +182,7 @@
 ;
 
 (use-package haskell-mode
+  :ensure
   :init
   (add-hook 'haskell-mode-hook 'interactive-haskell-mode)
   (add-hook 'haskell-mode-hook 'turn-on-haskell-indentation)
@@ -155,6 +198,7 @@
 ;
 
 (use-package markdown-mode
+  :ensure
   :init (add-to-list 'auto-mode-alist '(".md" . markdown-mode)))
 
 
@@ -163,6 +207,7 @@
 ;
 
 (use-package web-mode
+  :ensure
   :init
   (add-to-list 'auto-mode-alist '("\\.jsx$" . web-mode))
   :config
@@ -178,8 +223,18 @@
 ;
 
 (use-package purescript-mode
+  :ensure
   :init 
   (add-hook 'purescript-mode-hook 'turn-on-purescript-indentation))
+
+
+;
+; Elm mode
+;
+
+(use-package elm-mode
+  :ensure
+  )
 
 
 ;
@@ -187,6 +242,7 @@
 ;
 
 (use-package js2-mode
+  :ensure
   :mode (("\\.js$" . js2-mode))
   :config
   (setq-default 
@@ -200,6 +256,7 @@
 ;
 
 (use-package scss-mode
+  :ensure
   :config
   (setq-default 
    scss-compile-at-save nil
@@ -211,8 +268,15 @@
 ;
 
 (use-package company
+  :ensure
   :init
-  (add-hook 'after-init-hook 'global-company-mode))
+  (add-hook 'after-init-hook 'global-company-mode)
+  (global-set-key (kbd "C-SPC") 'company-complete)
+  (set 'company-idle-delay .3)
+
+  :config 
+  (define-key company-active-map (kbd "C-n") 'company-select-next)
+  (define-key company-active-map (kbd "C-p") 'company-select-previous))
 
 
 ;
@@ -220,6 +284,7 @@
 ;
 
 (use-package powerline
+  :ensure
   :init
   (powerline-default-theme))
 
@@ -234,3 +299,13 @@
                                                            (java . t)
                                                            (sql . t)
                                                            (C . t))))
+
+
+;
+; Which key
+;
+
+(use-package which-key
+  :ensure
+  :init
+  (which-key-mode))

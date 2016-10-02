@@ -45,6 +45,11 @@
 (global-set-key (kbd "M-h") 'windmove-left)
 (global-unset-key (kbd "C-SPC"))
 
+(set-face-attribute 'default
+                    nil
+                    :family "Source Code Pro"
+                    :height 110)
+
 ;
 ; Packages with use-package
 ;

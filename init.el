@@ -59,10 +59,10 @@
 ; Color theme
 ;
 
-(use-package atom-one-dark-theme
+(use-package material-theme
   :ensure
   :init
-  (load-theme 'atom-one-dark t))
+  (load-theme 'material-light t))
 
 
 ;

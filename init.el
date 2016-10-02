@@ -234,7 +234,8 @@
 
 (use-package elm-mode
   :ensure
-  )
+  :config
+  (setq elm-indent-offset 2))
 
 
 ;
@@ -286,7 +287,10 @@
 (use-package powerline
   :ensure
   :init
-  (powerline-default-theme))
+  (powerline-default-theme)
+  :config
+  (set-face-attribute 'mode-line nil
+                      :box nil))
 
 
 ;
